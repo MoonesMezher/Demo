@@ -28,7 +28,7 @@ body { font-family: 'Tajawal', sans-serif; font-display: swap; }
 }
 
 table th, table td {
-    border: 1px solid #282828;
+    border: 1px solid #58595B;
 }
 
 #header.active {
@@ -125,6 +125,22 @@ header a.active {
 }
 
 /* Responsive Styles */
+@media screen and (max-width: 1260px) {
+    footer .footer-container {
+        justify-content: start;
+    }
+
+    footer .footer-img {
+        position: absolute;
+        left: 0;
+        top: 60%;
+        transform: translateY(-50%);
+        z-index: 0;
+        height: fit-content;
+        max-width: 500px;
+    }
+}
+
 @media (max-width: 1024px) {
     /* Tablet Styles */
     .container {
@@ -173,7 +189,7 @@ header a.active {
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     footer .footer-img {
-        max-width: 377px;
+        max-width: 500px;
     }
 }
 
@@ -217,7 +233,7 @@ header a.active {
     /* Plans Section */
     
     #plans .text-5xl {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     #plans .plan-card {
@@ -275,7 +291,7 @@ header a.active {
     }
 
     footer .footer-img {
-        max-width: 300px;
+        max-width: 400px;
         translate: -100px;
     }
     
@@ -290,17 +306,6 @@ header a.active {
     
     .text-xl {
         font-size: 1.125rem;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    footer .footer-img {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 0;
-        height: fit-content;
     }
 }
 
@@ -386,6 +391,19 @@ header a.active {
 @media (max-width: 768px) {
     .hero-bg {
         background-position: 2% center;
+        box-shadow: none;
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(179.65deg, #000000 26.2%, rgba(0, 0, 0, 0) 69.6%);
+            z-index: 1;
+        }
     }
 }
 
@@ -399,4 +417,22 @@ header a.active {
     .hero-bg {
         background-position: 0% center;
     }
+}
+
+.plan-card:nth-child(1) { order: 3; } /* Purple becomes second */
+.plan-card:nth-child(2) { order: 2; } /* Blue becomes third */
+.plan-card:nth-child(3) { order: 1; } /* Orange becomes first */
+
+/* For 3-column layout, reset to natural order */
+@media (min-width: 1280px) {
+    .plan-card:nth-child(1),
+    .plan-card:nth-child(2),
+    .plan-card:nth-child(3) {
+        order: 0;
+    }
+}
+
+#footer-social-links a:last-child svg,
+#social-links a:last-child svg {
+    display: none;
 }
